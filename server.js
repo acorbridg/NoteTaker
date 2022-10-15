@@ -1,7 +1,7 @@
 const express = require('express');
 const fs = require('fs')
 const { v4: uuidv4 } = require('uuid');
-const noteData = require('./db/db.json');
+let noteData = require('./db/db.json');
 const PORT = 3001;
 
 const app = express();
@@ -23,8 +23,13 @@ app.post('/api/notes', (req, res) => {
   noteData.push(newNote)
   fs.writeFileSync('./db/db.json', JSON.stringify(noteData))
   res.json(newNote)
-
     //add .post stuff to receive a new note to save on the request body, add it to the db.json file, then return the new note. 
+})
+
+app.delete('/api/notes/:id', (req, res) => {
+  noteData = noteData.filter(note => note.id !== req.params.id)
+  fs.writeFileSync('./db/db.json', JSON.stringify(noteData))
+  res.send('')
 })
 
 app.listen(PORT, () => {
