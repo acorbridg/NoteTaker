@@ -6,5 +6,5 @@ This application uses Express.js to save, retrieve and delete note data.
 * notes can be saved and will appear in the right-hand column.
 * notes can be deleted.
 
-URL to deployed site:
+URL to deployed site: https://rocky-fortress-90214.herokuapp.com/
 Repository URL: https://github.com/acorbridg/NoteTaker
